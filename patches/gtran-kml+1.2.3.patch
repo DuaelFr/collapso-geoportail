@@ -1,0 +1,117 @@
+diff --git a/node_modules/gtran-kml/README.md b/node_modules/gtran-kml/README.md
+index b835de5..e8d453a 100644
+--- a/node_modules/gtran-kml/README.md
++++ b/node_modules/gtran-kml/README.md
+@@ -22,6 +22,10 @@ npm install gtran-kml
+ 
+   options:
+ 
++  - documentName - Specify the name of the full document. The Default value is **'My KML'**.
++
++  - documentDescription - Specify the description of the full document. The Default value is **'Converted from GeoJson by gtran-kml'**.
++
+   - name - Specify the feature name using a geojson property. The Default value is **'name'**.
+ 
+   - symbol - Specify feature Symbol. It accepts an symbol object or a function to return the symbol per feature.
+diff --git a/node_modules/gtran-kml/src/index.js b/node_modules/gtran-kml/src/index.js
+index 1d56645..8f3a544 100644
+--- a/node_modules/gtran-kml/src/index.js
++++ b/node_modules/gtran-kml/src/index.js
+@@ -45,28 +45,28 @@ exports.fromGeoJson = async (geojson, fileName, options = {}) => {
+ 
+   const symbols = {};
+ 
+-  if (typeof options.symbol === "function") {
+-    geojson.features.forEach(feature => {
+-      const symbol = options.symbol(feature);
+-      const id = md5(JSON.stringify(symbol));
++  geojson.features.forEach(feature => {
++    const symbol = {
++      geomType: feature.geometry.type,
++      symbol: typeof options.symbol === "function" ? options.symbol(feature) : options.symbol
++    };
++    const id = md5(JSON.stringify(symbol));
+ 
+-      if (!symbols[id]) {
+-        symbols[id] = symbol;
+-      }
++    if (!symbols[id]) {
++      symbols[id] = symbol;
++    }
+ 
+-      feature.properties[config.DEFAULT_STYLE_ID] = id;
+-    });
+-  } else if (typeof options.symbol === "object") {
+-    symbols[config.DEFAULT_STYLE_ID] = options.symbol;
+-  }
++    feature.properties[config.DEFAULT_STYLE_ID] = id;
++  });
+ 
+   let kmlContent = tokml(geojson, {
+-    name: options.name || "name"
++    name: options.name || "name",
++    documentName: options.documentName || 'My KML',
++    documentDescription: options.documentDescription || "Converted from GeoJson by gtran-kml"
+   });
+ 
+   if (options.symbol) {
+-    const geomType = getGeomType(geojson);
+-    kmlContent = symbol.addTo(kmlContent, geomType, symbols);
++    kmlContent = symbol.addTo(kmlContent, symbols);
+   }
+ 
+   if (fileName) {
+@@ -85,18 +85,6 @@ exports.fromGeoJson = async (geojson, fileName, options = {}) => {
+   }
+ };
+ 
+-function getGeomType(geojson) {
+-  // Assume there is only one geometry type in the geojson
+-  switch (geojson.features[0].geometry.type) {
+-    case "Point":
+-    case "Polygon":
+-    case "LineString":
+-      return geojson.features[0].geometry.type;
+-    default:
+-      throw new Error("Geometry type unsupported.");
+-  }
+-}
+-
+ function getGeometry(placemark) {
+   var geomTag = placemark.find("./Point");
+   if (geomTag) {
+diff --git a/node_modules/gtran-kml/src/symbol.js b/node_modules/gtran-kml/src/symbol.js
+index c76d346..aada957 100644
+--- a/node_modules/gtran-kml/src/symbol.js
++++ b/node_modules/gtran-kml/src/symbol.js
+@@ -1,25 +1,25 @@
+ const et = require("elementtree");
+ const config = require("config");
+ 
+-exports.addTo = function(kmlContent, geomType, symbols) {
++exports.addTo = function(kmlContent, symbols) {
+   var kml = et.parse(kmlContent);
+ 
+   for (const id in symbols) {
+-    addSymbol(kml, geomType, symbols[id], id);
++    addSymbol(kml, symbols[id].geomType, symbols[id].symbol, id);
+   }
+ 
+-  addFeatureSymbol(kml, geomType, symbols);
++  addFeatureSymbol(kml);
+ 
+   return kml.write();
+ };
+ 
+-function addFeatureSymbol(kml, geomType, symbols) {
++function addFeatureSymbol(kml) {
+   kml.findall(".//Placemark").forEach(place => {
+     const styleId = place.findtext(
+       `./ExtendedData/Data[@name="${config.DEFAULT_STYLE_ID}"]/value`
+     );
+     const placeStyle = et.SubElement(place, "styleUrl");
+-    placeStyle.text = styleId || config.DEFAULT_STYLE_ID;
++    placeStyle.text = '#' + (styleId || config.DEFAULT_STYLE_ID);
+     place.remove(`./ExtendedData/Data[@name="${config.DEFAULT_STYLE_ID}"]`);
+   });
+ }

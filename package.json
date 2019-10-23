@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/DuaelFr/collapso-geoportail/issues"
   },
-  "homepage": "https://github.com/DuaelFr/collapso-geoportail#readme"
+  "homepage": "https://github.com/DuaelFr/collapso-geoportail#readme",
+  "dependencies": {
+    "circle-to-polygon": "^1.0.2",
+    "csv-parser": "^2.3.1",
+    "gtran-kml": "^1.2.3",
+    "patch-package": "^6.2.0",
+    "postinstall-postinstall": "^2.0.0"
+  }
 }

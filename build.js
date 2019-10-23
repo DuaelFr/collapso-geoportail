@@ -1,2 +1,6 @@
 
-console.log('Hello world!');
+const config = require('config');
+
+config.get('builds').forEach((build) => {
+  require('./scripts/' + build)();
+});

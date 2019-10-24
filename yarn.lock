@@ -296,7 +296,7 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-config@^3.1.0:
+config@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/config/-/config-3.2.3.tgz#147a30f9eb235ecc46516f767e211335dbcbf3cc"
   integrity sha512-pditxQzO+SkKX/2gs99YnUGEjmBVkTj2o/hGOgC0oYEU7QgLnVVDYmcSL6HiGels/8QtFJpFzi5iKYv4D0dalg==
@@ -621,16 +621,15 @@ got@^6.7.1:
     url-parse-lax "^1.0.0"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.2.tgz#6f0952605d0140c1cfdb138ed005775b92d67b02"
-  integrity sha512-IItsdsea19BoLC7ELy13q1iJFNmd7ofZH5+X/pJr90/nRoPEX0DJo1dHDbgtYWOhJhcCgMDTOw84RZ72q6lB+Q==
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
+  integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
 gtran-kml@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/gtran-kml/-/gtran-kml-1.2.3.tgz#41f1914871a8727bdc7e8fba1d3f275f0f85d499"
-  integrity sha512-8814FLs7xEsgXzGBGrr5y2z9zMWkS5dBwnoxAoknRjowfOPZyIpaJhrgIEeHXMmsOnFA8jc96qDLxPjifwO9jA==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/gtran-kml/-/gtran-kml-1.3.1.tgz#d5d1072757aecc5aeb5eb13923beb0fa0613f902"
+  integrity sha512-VxtxZCA6eXMh7huUkaHYYYIQjkjfPJOU9qzhMV+sMYwh+PguBq/lhfnFxnCVF+iB8E3AEMLXkbSW5D8lXGizqQ==
   dependencies:
-    config "^3.1.0"
     elementtree "^0.1.7"
     tokml "^0.4.0"
 

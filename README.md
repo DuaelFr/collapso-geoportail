@@ -6,7 +6,7 @@ Collection de fichiers à importer dans le Géoportail pour aider à la recherch
 
 ### Centrales nucléaires françaises
 
-Fichier : dist/nuclear_power_plants.kml
+Fichier : https://github.com/DuaelFr/collapso-geoportail/blob/master/dist/nuclear_power_plants.kml
 
 Légende :
 * zone rouge : cercle de 20km autour de la centrale correspondant au PPI actuel.

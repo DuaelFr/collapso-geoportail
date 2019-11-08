@@ -1,0 +1,19 @@
+diff --git a/node_modules/gtran-kml/src/symbol.js b/node_modules/gtran-kml/src/symbol.js
+index 19efb2c..2e66226 100644
+--- a/node_modules/gtran-kml/src/symbol.js
++++ b/node_modules/gtran-kml/src/symbol.js
+@@ -19,7 +19,13 @@ function addFeatureSymbol(kml, featureStyleKey) {
+     );
+     const placeStyle = et.SubElement(place, "styleUrl");
+     placeStyle.text = '#' + (styleId || featureStyleKey);
+-    place.remove(`./ExtendedData/Data[@name="${featureStyleKey}"]`);
++
++    // Clean up ExtendedData styleId.
++    let extendedData = place.find('./ExtendedData');
++    extendedData.remove(extendedData.find(`./Data[@name="${featureStyleKey}"]`));
++    if (extendedData.findall('./*').length === 0) {
++      place.remove(extendedData);
++    }
+   });
+ }
+ 

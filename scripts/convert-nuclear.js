@@ -14,15 +14,21 @@ function convert() {
       area_80.push({
         type: "Feature",
         geometry: circleToPolygon(center, 80000, 64),
-        properties: {
+        meta: {
           type: 'area_80',
+        },
+        properties: {
+          name: `80km autour de la centrale de ${data['Centrale nucléaire']}`,
         }
       });
       area_20.push({
         type: "Feature",
         geometry: circleToPolygon(center, 20000, 32),
-        properties: {
+        meta: {
           type: 'area_20',
+        },
+        properties: {
+          name: `20km autour de la centrale de ${data['Centrale nucléaire']}`,
         }
       });
       power_plant.push({
@@ -31,9 +37,11 @@ function convert() {
           type: "Point",
           coordinates: center,
         },
-        properties: {
+        meta: {
           type: 'power_plant',
-          name: data['Centrale nucléaire'],
+        },
+        properties: {
+          name: `Centrale de ${data['Centrale nucléaire']}`,
         }
       });
     })
@@ -62,7 +70,7 @@ function convert() {
               scale: 1,
             }
           };
-          return settings[feature.properties.type];
+          return settings[feature.meta.type];
         },
         name: 'name',
         documentName: 'Centrales Nucléaires',

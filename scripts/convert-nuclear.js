@@ -18,7 +18,7 @@ function convert() {
           type: 'area_80',
         },
         properties: {
-          name: `80km autour de la centrale de ${data['Centrale nucléaire']}`,
+          description: `Ditance de la centrale de ${data['Centrale nucléaire']} inférieure à 80km`,
         }
       });
       area_20.push({
@@ -28,7 +28,7 @@ function convert() {
           type: 'area_20',
         },
         properties: {
-          name: `20km autour de la centrale de ${data['Centrale nucléaire']}`,
+          description: `Distance de la centrale de ${data['Centrale nucléaire']} inférieure à 20km`,
         }
       });
       power_plant.push({
@@ -42,6 +42,7 @@ function convert() {
         },
         properties: {
           name: `Centrale de ${data['Centrale nucléaire']}`,
+          description: `<p><strong>Nombre de réacteurs</strong> : ${data['Nombre de réacteurs']}</p><p><strong>Année de mise en service</strong> : ${data['Mise en service (premier réacteur)']}</p>`
         }
       });
     })

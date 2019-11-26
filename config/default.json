@@ -1,5 +1,6 @@
 {
   "builds": [
-    "convert-nuclear"
+    "convert-nuclear",
+    "convert-european-elections"
   ]
 }

@@ -104,27 +104,27 @@ const partyMapping = {
 function defineSymbol(feature) {
   const settings = {
     'ECO': {
-      icon: 'https://github.com/DuaelFr/collapso-geoportail/blob/master/src/images/flag-green.png',
+      icon: 'https://raw.githubusercontent.com/DuaelFr/collapso-geoportail/master/src/images/flag-green.png',
       scale: 1,
     },
     'EXG': {
-      icon: 'https://github.com/DuaelFr/collapso-geoportail/blob/master/src/images/flag-red.png',
+      icon: 'https://raw.githubusercontent.com/DuaelFr/collapso-geoportail/master/src/images/flag-red.png',
       scale: 1,
     },
     'DVG': {
-      icon: 'https://github.com/DuaelFr/collapso-geoportail/blob/master/src/images/flag-pink.png',
+      icon: 'https://raw.githubusercontent.com/DuaelFr/collapso-geoportail/master/src/images/flag-pink.png',
       scale: 1,
     },
     'CTR': {
-      icon: 'https://github.com/DuaelFr/collapso-geoportail/blob/master/src/images/flag-orange.png',
+      icon: 'https://raw.githubusercontent.com/DuaelFr/collapso-geoportail/master/src/images/flag-orange.png',
       scale: 1,
     },
     'DVD': {
-      icon: 'https://github.com/DuaelFr/collapso-geoportail/blob/master/src/images/flag-blue.png',
+      icon: 'https://raw.githubusercontent.com/DuaelFr/collapso-geoportail/master/src/images/flag-blue.png',
       scale: 1,
     },
     'EXD': {
-      icon: 'https://github.com/DuaelFr/collapso-geoportail/blob/master/src/images/flag-brown.png',
+      icon: 'https://raw.githubusercontent.com/DuaelFr/collapso-geoportail/master/src/images/flag-brown.png',
       scale: 1,
     },
   };
